@@ -48,11 +48,11 @@ def job_update(request, pk):
         job.contact_name = request.POST.get('contact_name', '')
         job.contact_phone = request.POST.get('contact_phone', '')
         job.application_date = request.POST.get('application_date')
-        job.closing_date = request.POST.get('closing_date', None)
+        job.closing_date = request.POST.get('closing_date') or None
         job.status = request.POST.get('status', 'sent')
         job.notes = request.POST.get('notes', '')
         job.save()
-        return redirect('job_list')
+        return redirect('home')
 
     return render(request, 'job_form.html', {'job': job, 'action': 'Edit'})
 
