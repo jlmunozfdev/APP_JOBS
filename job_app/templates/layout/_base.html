@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %}</title>
+
+    {% block styles %}
+    
+    <link rel="stylesheet" href="{% static 'src/output.css' %}">
+
+    {% endblock styles %}
+
+</head>
+<body class="flex flex-col items-center h-screen bg-gradient-to-t from-gray-700 via-gray-900 to-black">
+
+   
+
+    <main class="flex justify-center items-center w-full h-full">
+
+        {% block content %}
+        
+        {% endblock content %}
+
+    </main>
+
+    {% block scripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+    <script src="https://kit.fontawesome.com/fda8995978.js" crossorigin="anonymous"></script>
+    {% endblock scripts %}
+</body>
+</html>

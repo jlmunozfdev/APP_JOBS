@@ -1,13 +1,14 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'src/output.css' %}">
-    <title>Inicio</title>
-</head>
-<body class="bg-gradient-to-t from-gray-700 via-gray-900 to-black">
-    <h1 class="text-white">Hola Mundo desde Django</h1>
-</body>
-</html>
+{% extends "layout/_base.html" %}
+
+{% block title %}Dashboard{% endblock title %}
+
+{% block content %}
+
+<div class="flex justify-center items-center w-full wallpaper">
+
+   <div class="flex flex-wrap justify-center items-center gap-2 opacity-bg">
+       
+    </div>
+</div>
+
+{% endblock content %}
