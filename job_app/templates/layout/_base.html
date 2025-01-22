@@ -7,22 +7,13 @@
     <title>{% block title %}{% endblock title %}</title>
 
     {% block styles %}
-    
     <link rel="stylesheet" href="{% static 'src/output.css' %}">
-
     {% endblock styles %}
-
 </head>
-<body class="flex flex-col items-center h-screen bg-gradient-to-t from-gray-700 via-gray-900 to-black">
-
-   
-
-    <main class="flex justify-center items-center w-full h-full">
-
+<body class="flex flex-col items-center h-screen bg-gradient-to-t from-gray-700 via-gray-900 to-black overflow-hidden">
+    <main class="flex justify-center items-start w-full  py-10 overflow-y-auto">
         {% block content %}
-        
         {% endblock content %}
-
     </main>
 
     {% block scripts %}

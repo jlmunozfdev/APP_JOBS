@@ -19,7 +19,7 @@ def job_create(request):
         contact_name = request.POST.get('contact_name', '')
         contact_phone = request.POST.get('contact_phone', '')
         application_date = request.POST.get('application_date')
-        closing_date = request.POST.get('closing_date', None)
+        closing_date = request.POST.get('closing_date') or None
         status = request.POST.get('status', 'sent')
         notes = request.POST.get('notes', '')
 
@@ -35,7 +35,7 @@ def job_create(request):
             status=status,
             notes=notes,
         )
-        return redirect('job_list')
+        return redirect('home')
 
     return render(request, 'job_form.html', {'action': 'Add'})
 
