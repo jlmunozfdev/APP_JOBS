@@ -3,7 +3,7 @@ from django.db import models
 class JobApplication(models.Model):
     STATUS_CHOICES = [
         ('sent', 'Enviado'),
-        ('in_progress', 'En proceso'),
+        ('in_progress', 'Proceso'),
         ('completed', 'Finalizado'),
     ]
 
