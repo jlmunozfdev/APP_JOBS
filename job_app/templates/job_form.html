@@ -1,6 +1,6 @@
 {% extends "layout/_base.html" %}
 
-{% block title %}Dashboard{% endblock title %}
+{% block title %}Add Job{% endblock title %}
 
 {% block content %}
 <div class="w-3/5 max-w-4xl bg-black rounded-lg border p-6">
@@ -14,14 +14,14 @@
         <!-- Campo: Título del puesto -->
         <div class="col-span-1">
             <label for="job_title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Job Title</label>
-            <input type="text" name="job_title" id="job_title" value="{{ job.job_title|default_if_none:'' }}" 
+            <input type="text" name="job_title" id="job_title" value="{{ job.job_title|default_if_none:'' }}" required 
                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
         </div>
 
         <!-- Campo: Nombre de la empresa -->
         <div class="col-span-1">
             <label for="company_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Company Name</label>
-            <input type="text" name="company_name" id="company_name" value="{{ job.company_name|default_if_none:'' }}" 
+            <input type="text" name="company_name" id="company_name" value="{{ job.company_name|default_if_none:'' }}" required
                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
         </div>
 
@@ -49,7 +49,7 @@
         <!-- Campo: Fecha de postulación -->
         <div class="col-span-1">
             <label for="application_date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Application Date</label>
-            <input type="date" name="application_date" id="application_date" value="{{ job.application_date|date:'Y-m-d' }}" 
+            <input type="date" name="application_date" id="application_date" value="{{ job.application_date|date:'Y-m-d'}}" required 
                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
         </div>
 
