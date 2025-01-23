@@ -7,7 +7,7 @@ def index(request):
      return render(request, 'index.html')
 
 def home(request):
-    jobs = JobApplication.objects.all()
+    jobs = JobApplication.objects.all().order_by('application_date')
     return render(request, 'home.html', {'jobs': jobs})
 
 def job_create(request):
