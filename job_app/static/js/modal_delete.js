@@ -19,3 +19,4 @@ function closeDeleteModal() {
     const modal = document.getElementById('deleteModal');
     modal.classList.add('hidden');
 }
+

@@ -13,14 +13,15 @@
     {% endblock styles %}
 </head>
 <body class="flex flex-col items-center h-screen bg-gradient-to-t from-gray-700 via-gray-900 to-black overflow-hidden">
-    <main class="flex justify-center items-start w-full  py-10 overflow-y-auto">
+    <main class="flex justify-center items-start w-full py-4 overflow-y-auto">
         {% block content %}
         {% endblock content %}
     </main>
 
     {% block scripts %}
 
-    <script src="{% static "js/main.js" %}"></script>
+    <script src="{% static "js/modal_delete.js" %}"></script>
+    <script src="{% static "js/modal_view.js" %}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
     <script src="https://kit.fontawesome.com/fda8995978.js" crossorigin="anonymous"></script>
     {% endblock scripts %}

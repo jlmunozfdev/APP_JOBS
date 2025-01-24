@@ -1,14 +1,37 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import JobApplication
-from .forms import JobApplicationForm
+from django.db.models import Q
 
 
 def index(request):
      return render(request, 'index.html')
 
 def home(request):
+    query = request.GET.get('q', '')
     jobs = JobApplication.objects.all().order_by('application_date')
+    
+    if query:
+        jobs = jobs.filter(
+            Q(job_title__icontains=query) |
+            Q(status__icontains=query) 
+        )
+    
     return render(request, 'home.html', {'jobs': jobs})
+
+from django.http import JsonResponse
+
+def job_detail(request, pk):
+    job = get_object_or_404(JobApplication, pk=pk)
+    data = {
+        'job_title': job.job_title,
+        'company_name': job.company_name,
+        'application_date': job.application_date,
+        'closing_date': job.closing_date,
+        'get_status_display': job.get_status_display(),
+        'notes': job.notes,
+    }
+    return JsonResponse(data)
+
 
 def job_create(request):
     if request.method == 'POST':

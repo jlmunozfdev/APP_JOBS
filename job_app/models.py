@@ -2,9 +2,9 @@ from django.db import models
 
 class JobApplication(models.Model):
     STATUS_CHOICES = [
-        ('sent', 'Enviado'),
-        ('in_progress', 'Proceso'),
-        ('completed', 'Finalizado'),
+        ('sent', 'Sent'),
+        ('in_progress', 'Progress'),
+        ('completed', 'Finalized'),
     ]
 
     job_title = models.CharField(max_length=255)
