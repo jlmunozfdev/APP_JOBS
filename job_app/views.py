@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import JobApplication
+from django.http import JsonResponse
 from django.db.models import Q
 
 
@@ -12,13 +13,13 @@ def home(request):
     
     if query:
         jobs = jobs.filter(
+            Q(company_name__icontains=query) |
             Q(job_title__icontains=query) |
             Q(status__icontains=query) 
         )
     
     return render(request, 'home.html', {'jobs': jobs})
 
-from django.http import JsonResponse
 
 def job_detail(request, pk):
     job = get_object_or_404(JobApplication, pk=pk)
