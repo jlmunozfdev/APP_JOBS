@@ -25,9 +25,13 @@ def job_detail(request, pk):
     job = get_object_or_404(JobApplication, pk=pk)
     data = {
         'job_title': job.job_title,
+        'requirements': job.requirements,
+        'contact_name': job.contact_name,
+        'contact_phone': job.contact_phone,
         'company_name': job.company_name,
         'application_date': job.application_date,
         'closing_date': job.closing_date,
+        'status': job.status,
         'get_status_display': job.get_status_display(),
         'notes': job.notes,
     }
