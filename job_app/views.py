@@ -90,3 +90,18 @@ def job_delete(request, pk):
         job.delete()
         return redirect('home')
     return render(request, 'job_confirm_delete.html', {'job': job})
+
+
+def bulk_update_status(request):
+    if request.method == 'POST':
+        job_ids = request.POST.getlist('job_ids')  # Lista de IDs seleccionados
+        new_status = request.POST.get('status')    # Nuevo estado
+
+        if job_ids and new_status:
+            # Convertir a int si deseas mayor seguridad
+            job_ids_int = [int(x) for x in job_ids]
+            JobApplication.objects.filter(pk__in=job_ids_int).update(status=new_status)
+
+        return redirect('home')
+
+    return redirect('home')
