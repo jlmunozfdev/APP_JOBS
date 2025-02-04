@@ -1,0 +1,65 @@
+{% load static %}
+{% comment %} Modal para Editar Nuevo Trabajo {% endcomment %}
+<div id="editModalJob" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
+    <div class="bg-gray-100 p-6 rounded-lg shadow-lg w-3/5 max-w-4xl overflow-y-auto max-h-[90vh]">
+        <h2 class="text-xl font-semibold text-gray-800 mb-4">Edit Job</h2>
+        <form id="editJobForm" method="post" class="grid grid-cols-2 gap-6">
+            {% csrf_token %}
+            <input type="hidden" name="job_id" id="editJobId">
+            
+            <div class="col-span-1">
+                <label for="edit_job_title" class="block mb-2 text-sm font-medium text-gray-900">Job Title</label>
+                <input type="text" name="job_title" id="edit_job_title" required class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5">
+            </div>
+            
+            <div class="col-span-1">
+                <label for="edit_company_name" class="block mb-2 text-sm font-medium text-gray-900">Company Name</label>
+                <input type="text" name="company_name" id="edit_company_name" required class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5">
+            </div>
+            
+            <div class="col-span-2">
+                <label for="edit_requirements" class="block mb-2 text-sm font-medium text-gray-900">Requirements</label>
+                <textarea name="requirements" id="edit_requirements" rows="4" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"></textarea>
+            </div>
+            
+            <div class="col-span-1">
+                <label for="edit_contact_name" class="block mb-2 text-sm font-medium text-gray-900">Contact Name</label>
+                <input type="text" name="contact_name" id="edit_contact_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5">
+            </div>
+            
+            <div class="col-span-1">
+                <label for="edit_contact_phone" class="block mb-2 text-sm font-medium text-gray-900">Contact Phone</label>
+                <input type="text" name="contact_phone" id="edit_contact_phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5">
+            </div>
+
+            <div class="col-span-1">
+                <label for="edit_application_date" class="block mb-2 text-sm font-medium text-gray-900">Application Date</label>
+                <input type="date" name="application_date" id="edit_application_date" required class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5">
+            </div>
+            
+            <div class="col-span-1">
+                <label for="edit_closing_date" class="block mb-2 text-sm font-medium text-gray-900">Closing Date</label>
+                <input type="date" name="closing_date" id="edit_closing_date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5">
+            </div>
+
+            <div class="col-span-1">
+                <label for="edit_status" class="block mb-2 text-sm font-medium text-gray-900">Status</label>
+                <select name="status" id="edit_status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5">
+                    <option value="sent">Sent</option>
+                    <option value="in_progress">In Progress</option>
+                    <option value="completed">Finalized</option>
+                </select>
+            </div>
+
+            <div class="col-span-2">
+                <label for="edit_notes" class="block mb-2 text-sm font-medium text-gray-900">Notes</label>
+                <textarea name="notes" id="edit_notes" rows="4" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"></textarea>
+            </div>
+
+            <div class="col-span-2 flex justify-end space-x-4">
+                <button type="submit" class="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600">Save</button>
+                <button type="button" onclick="closeEditModal()" class="bg-gray-500 text-white px-6 py-2 rounded hover:bg-gray-600">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
