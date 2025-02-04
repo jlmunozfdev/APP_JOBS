@@ -15,7 +15,7 @@
                     <p><strong>Application Date:</strong> ${data.application_date}</p>
                     <p><strong>Closing Date:</strong> ${data.closing_date || 'N/A'}</p>
                     <p><strong>Status:</strong> ${data.get_status_display}</p>
-                    <p><strong>Notes:</strong> ${data.notes || 'N/A'}</p>
+                    <p class="overflow-hidden"><strong>Notes:</strong> ${data.notes || 'N/A'}</p>
                 `;
                 modal.classList.remove('hidden');
             });
