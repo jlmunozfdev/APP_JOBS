@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import JobApplication
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.db.models import Q
+import csv
 
 
 def index(request):
@@ -105,3 +106,30 @@ def bulk_update_status(request):
         return redirect('home')
 
     return redirect('home')
+
+def generate_report_csv(request):
+    status = request.GET.get('status', 'sent')
+    jobs = JobApplication.objects.filter(status=status).order_by('application_date')
+
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = f'attachment; filename="job_report_{status}.csv"'
+
+    # Cambiamos el delimitador a ";" en lugar de ","
+    writer = csv.writer(response, delimiter=';', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+
+    # Encabezados de la tabla
+    writer.writerow(["ID", "Job Title", "Company", "Application Date", "Closing Date", "Status", "Notes"])
+
+    # Datos de la tabla
+    for job in jobs:
+        writer.writerow([
+            job.id,
+            job.job_title,
+            job.company_name,
+            job.application_date.strftime('%Y-%m-%d') if job.application_date else "N/A",
+            job.closing_date.strftime('%Y-%m-%d') if job.closing_date else "N/A",
+            job.get_status_display(),
+            job.notes if job.notes else "N/A",
+        ])
+
+    return response
