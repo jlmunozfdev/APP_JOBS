@@ -20,3 +20,17 @@ function closeDeleteModal() {
     modal.classList.add('hidden');
 }
 
+// Función para cerrar el modal al hacer clic fuera del contenido
+function closeModalOutsideClick(modalId, contentClass) {
+    const modal = document.getElementById(modalId);
+    
+    modal.addEventListener('click', function (event) {
+        const modalContent = modal.querySelector(contentClass);
+        if (!modalContent.contains(event.target)) {
+            modal.classList.add('hidden');
+        }
+    })
+}
+
+// Agregar evento para cerrar al hacer clic fuera
+closeModalOutsideClick('deleteModal', '.bg-gray-100');
